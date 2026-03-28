@@ -47,13 +47,7 @@
         }
 
         // Live transcript via WebSocket
-        const ws = new WebSocket("wss://dagadya.railway.app/transcript");
-        ws.onmessage = (event) => {
-            const div = document.getElementById("transcript");
-            const msg = JSON.parse(event.data);
-            div.innerHTML += `<p><span class="text-green-400">${msg.role}:</span> ${msg.text}</p>`;
-            div.scrollTop = div.scrollHeight;
-        };
+        <p class="text-green-400">Call in progress...</p>
     </script>
 </body>
 </html>
