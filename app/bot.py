@@ -102,7 +102,7 @@ async def run_bot(streamSid : str , callSid : str , websocket):
 
     task = PipelineTask(
         pipeline,
-        PipelineParams(allow_interruptions=True)
+        params = PipelineParams(allow_interruptions=True)
     )
 
     @transport.event_handler("on_client_connected")
