@@ -103,7 +103,7 @@ def format_soil_for_gemini(soil: dict, crop: str) -> str:
     if organic < 5:
         advice.append("Organic carbon kam hai — खाद daalen")
     else:
-        advice.append("Mitti healthy hai")
+        advice.append("Mitti utpad ke liye theek hai")
 
     return f"Crop: {crop}\n" + " | ".join(advice)
 
