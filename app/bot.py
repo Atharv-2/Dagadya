@@ -65,26 +65,28 @@ async def run_bot(streamSid : str , callSid : str , websocket):
 
     stt = SarvamSTTService(
         api_key=os.getenv("SARVAM_API_KEY"),
-        settings=SarvamSTTService.Settings(
-            model="saarika:v2.5",
-            language=Language.HI
+        model="saaras:v3",
+        params=SarvamSTTService.InputParams(
+            mode="codemix"
         )
-    )   
+    )
 
     llm = GoogleLLMService(
         api_key=os.getenv("GEMINI_API_KEY"),
-        model="gemini-2.0-flash"
+        model="gemini-1.5-flash"
     )
 
+    
     tts = SarvamTTSService(
         api_key=os.getenv("SARVAM_API_KEY"),
-        voice_id="anushka",
+        voice_id="ishita",
         model="bulbul:v3",
         params=SarvamTTSService.InputParams(
             language=Language.HI,
+            pace=1.2,
             temperature=0.8
         )
-)
+    )
 
     messages=[
         {
