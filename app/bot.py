@@ -6,7 +6,7 @@ from pipecat.frames.frames import LLMRunFrame
 
 from pipecat.transcriptions.language import Language
 
-from pipecat.services.google.llm import GoogleLLMService
+from pipecat.services.groq import GroqLLMService
 from pipecat.services.sarvam.stt import SarvamSTTService
 from pipecat.services.sarvam.tts import SarvamTTSService
 
@@ -71,9 +71,9 @@ async def run_bot(streamSid : str , callSid : str , websocket):
         )
     )
 
-    llm = GoogleLLMService(
-        api_key=os.getenv("GEMINI_API_KEY"),
-        model="gemini-1.5-flash"
+    llm = GroqLLMService(
+        api_key=os.getenv("GROQ_API_KEY"),
+        model="llama-3.1-8b-instant"
     )
 
     
