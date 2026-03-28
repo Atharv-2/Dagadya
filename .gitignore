@@ -1,0 +1,34 @@
+# Python
+.Python
+env/
+venv/
+lib/
+bin/
+include/
+share/
+*.pyc
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+dist/
+site/
+pip-wheel-metadata/
+share/python-wheels/
+
+# FastAPI and project-specific files
+*.log
+*.sqlite
+*.db
+.env
+.flaskenv
+secrets.toml
+debug.log
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*~
+.DS_Store
