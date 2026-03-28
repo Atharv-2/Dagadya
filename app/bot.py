@@ -1,8 +1,10 @@
 import os
 from pipecat.serializers.twilio import TwilioFrameSerializer
-from pipecat.transports.websocket.server import WebsocketServerTransport , WebsocketServerParams
+# from pipecat.transports.websocket.server import WebsocketServerTransport , WebsocketServerParams
 from pipecat.audio.vad.silero import SileroVADAnalyzer
 from pipecat.frames.frames import LLMRunFrame
+
+from pipecat.transcriptions.language import Language
 
 from pipecat.services.google.llm import GoogleLLMService
 from pipecat.services.sarvam.stt import SarvamSTTService
@@ -62,12 +64,12 @@ async def run_bot(streamSid : str , callSid : str , websocket):
     )
 
     stt = SarvamSTTService(
-    api_key=os.getenv("SARVAM_API_KEY"),
-    settings=SarvamSTTService.Settings(
-        model="saarika:v2.5",
-        language="hi-IN"
-    )
-)
+        api_key=os.getenv("SARVAM_API_KEY"),
+        settings=SarvamSTTService.Settings(
+            model="saarika:v2.5",
+            language=Language.HI
+        )
+    )   
 
     llm = GoogleLLMService(
         api_key=os.getenv("GEMINI_API_KEY"),
@@ -76,12 +78,13 @@ async def run_bot(streamSid : str , callSid : str , websocket):
 
     tts = SarvamTTSService(
         api_key=os.getenv("SARVAM_API_KEY"),
-        settings=SarvamTTSService.Settings(
-            model="bulbul:v3",
-            target_language_code="hi-IN"
+        voice_id="anushka",
+        model="bulbul:v3",
+        params=SarvamTTSService.InputParams(
+            language=Language.HI,
+            temperature=0.8
         )
-        ,voice_id="anushka"
-    )
+)
 
     messages=[
         {
