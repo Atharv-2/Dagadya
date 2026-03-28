@@ -51,8 +51,8 @@ async def run_bot(streamSid : str , callSid : str , websocket):
     )
 
     transport = WebsocketServerTransport(
-        websocket = websocket,
         params=WebsocketServerParams(
+            websocket = websocket,
             audio_in_enabled=True,
             audio_out_enabled=True,
             add_wav_header=False,
