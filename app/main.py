@@ -19,7 +19,7 @@ async def root():
     return HTMLResponse(content="""
         <Response>
             <Connect>
-                <Stream url="wss://dagadya.railway.app/ws"/>
+                <Stream url="wss://dagadya-production.up.railway.app/ws"/>
             </Connect>
         </Response>
     """, media_type="application/xml")
@@ -50,7 +50,7 @@ async def make_call(request : CallRequest):
     call= client.calls.create(
         to = request.phone_number,
         from_= os.getenv("TWILIO_PHONE_NUMBER"),
-        url="https://dagadya.railway.app/"
+        url="https://dagadya-production.up.railway.app/"
     )
 
     return {"status" : "calling", "sid" : call.sid}
